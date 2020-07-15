@@ -102,6 +102,12 @@ public class MongodbSourceHelper {
         	System.out.println(startFrom);
         	LOG.debug("resultSize:" + row.size()+" startFrom:"+startFrom);  
     	}
+	try {
+			cursor.close();  //关闭资源
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	return row;
     }
 
