@@ -1,0 +1,28 @@
+#This is a model,you can use for test
+# Name the components on this agent 
+a1.sources = r1
+a1.sinks = k1
+a1.channels = c1
+
+# Describe/configure the source
+a1.sources.r1.type = com.yc.flumesource.MongodbSource
+a1.sources.r1.Mongodb.url = 192.168.6.200:23000,192.168.6.201:23000,192.168.6.202:23000
+a1.sources.r1.Mongodb.database= mybike                
+a1.sources.r1.Mongodb.collection = ridelogs
+a1.sources.r1.Mongodb.column= _id
+a1.sources.r1.start.from = 0
+a1.sources.r1.interval=2000
+a1.sources.r1.charset=UTF-8
+
+# Describe the sink
+a1.sinks.k1.type = file_roll
+a1.sinks.k1.sink.directory= /opt/resultridelog
+
+# Describe the channel
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 1000
+a1.channels.c1.transactionCapacity = 100
+
+# Bind the source and sink to the channel
+a1.sources.r1.channels = c1
+a1.sinks.k1.channel = c1
