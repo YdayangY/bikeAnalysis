@@ -108,6 +108,7 @@ public class MongodbSource extends AbstractSource implements EventDrivenSource ,
 							channelProcessor.processEventBatch(events);
 		                }
 		            }
+			     events.clear();   //清空events  避免提交之前提交过的数据。
 		            Thread.sleep(interval);  //线程休眠时间  配合flume这两个配置使用capacity transactionCapacity   不然上游数据量太大 下游消费不及时会报错
 				} catch (Exception e) {
 					LOG.error("读取Mongodb数据异常",e);
