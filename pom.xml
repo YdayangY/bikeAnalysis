@@ -77,7 +77,7 @@
  <dependency>
     <groupId>com.alibaba</groupId>
     <artifactId>fastjson</artifactId>
-    <version>1.2.62</version>
+    <version>1.2.83</version>
 </dependency>
  <!-- 分词服务是以微服务提供的，所以引⼊JSON和http -->
  <dependency>
